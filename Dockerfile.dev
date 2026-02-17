@@ -1,0 +1,28 @@
+# Development Dockerfile for Ryujin Backend with Hot Reload
+# Uses Air for automatic recompilation on code changes
+
+FROM golang:1.25.6-alpine
+
+# Install development tools and dependencies
+RUN apk add --no-cache git make curl
+
+# Install Air for hot reload
+RUN go install github.com/air-verse/air@latest
+
+# Set working directory
+WORKDIR /app
+
+# Copy go mod files first for better caching
+COPY go.mod go.sum ./
+
+# Download dependencies
+RUN go mod download
+
+# Copy the entire backend source
+COPY . .
+
+# Expose port
+EXPOSE 8080
+
+# Run Air for hot reload
+CMD ["air", "-c", ".air.toml"]

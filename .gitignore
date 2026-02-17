@@ -1,0 +1,53 @@
+# Backend (Go) - Git Ignore
+
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+main
+
+# Test coverage
+*.out
+*.test
+coverage.txt
+coverage.html
+
+# Go workspace
+go.work
+
+# Vendor (if using)
+vendor/
+
+# Environment & Secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.crt
+
+# IDE & Editors
+.vscode/
+.idea/
+*.iml
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Air hot reload
+build-errors.log
