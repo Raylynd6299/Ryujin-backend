@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	"gorm.io/driver/postgres"
@@ -12,6 +13,12 @@ import (
 	financeAppServices "github.com/Raylynd6299/ryujin/internal/modules/finance/application/services"
 	financeControllers "github.com/Raylynd6299/ryujin/internal/modules/finance/infrastructure/http/controllers"
 	financeRepos "github.com/Raylynd6299/ryujin/internal/modules/finance/infrastructure/persistence/repositories"
+	investAppServices "github.com/Raylynd6299/ryujin/internal/modules/investment/application/services"
+	"github.com/Raylynd6299/ryujin/internal/modules/investment/infrastructure/external"
+	investControllers "github.com/Raylynd6299/ryujin/internal/modules/investment/infrastructure/http/controllers"
+	investModels "github.com/Raylynd6299/ryujin/internal/modules/investment/infrastructure/persistence/models"
+	investRepos "github.com/Raylynd6299/ryujin/internal/modules/investment/infrastructure/persistence/repositories"
+	"github.com/Raylynd6299/ryujin/internal/modules/investment/infrastructure/worker"
 	userAppServices "github.com/Raylynd6299/ryujin/internal/modules/user/application/services"
 	userControllers "github.com/Raylynd6299/ryujin/internal/modules/user/infrastructure/http/controllers"
 	userRepos "github.com/Raylynd6299/ryujin/internal/modules/user/infrastructure/persistence/repositories"
@@ -34,6 +41,12 @@ type AppDependencies struct {
 	ExpenseController      *financeControllers.ExpenseController
 	DebtController         *financeControllers.DebtController
 	AccountController      *financeControllers.AccountController
+
+	// Investment Module
+	HoldingController       *investControllers.HoldingController
+	PortfolioController     *investControllers.PortfolioController
+	StockAnalysisController *investControllers.StockAnalysisController
+	PriceRefreshWorker      *worker.PriceRefreshWorker
 }
 
 // NewAppDependencies creates and initializes all application dependencies
@@ -80,6 +93,41 @@ func NewAppDependencies(cfg *config.Config) (*AppDependencies, error) {
 
 	log.Println("✓ Finance module initialized")
 
+	// ── Investment Module ─────────────────────────────────────────────────────
+	yahooClient := external.NewYahooFinanceClient()
+	alphaVantageClient := external.NewAlphaVantageClient(cfg.ExternalAPI.AlphaVantageAPIKey)
+	compositePriceProvider := external.NewCompositePriceProvider(yahooClient, alphaVantageClient)
+
+	holdingRepo := investRepos.NewHoldingRepositoryGorm(db)
+	stockQuoteRepo := investRepos.NewStockQuoteRepositoryGorm(db)
+	stockPriceHistoryRepo := investRepos.NewStockPriceHistoryRepositoryGorm(db)
+
+	holdingService := investAppServices.NewHoldingService(holdingRepo, compositePriceProvider, stockQuoteRepo, yahooClient)
+	portfolioService := investAppServices.NewPortfolioService(holdingRepo)
+	stockAnalysisService := investAppServices.NewStockAnalysisService(stockQuoteRepo, stockPriceHistoryRepo, yahooClient)
+
+	holdingCtrl := investControllers.NewHoldingController(holdingService)
+	portfolioCtrl := investControllers.NewPortfolioController(portfolioService)
+	stockAnalysisCtrl := investControllers.NewStockAnalysisController(stockAnalysisService)
+
+	priceRefreshWorker := worker.NewPriceRefreshWorker(
+		stockQuoteRepo,
+		stockPriceHistoryRepo,
+		yahooClient,
+		15*time.Minute,
+	)
+
+	// Auto-migrate investment models — ORDER MATTERS: StockQuote first (FK target)
+	if err := db.AutoMigrate(
+		&investModels.StockQuoteModel{},
+		&investModels.StockPriceHistoryModel{},
+		&investModels.HoldingModel{},
+	); err != nil {
+		return nil, fmt.Errorf("failed to migrate investment models: %w", err)
+	}
+
+	log.Println("✓ Investment module initialized")
+
 	return &AppDependencies{
 		DB:         db,
 		Engine:     engine,
@@ -93,6 +141,11 @@ func NewAppDependencies(cfg *config.Config) (*AppDependencies, error) {
 		ExpenseController:      expenseCtrl,
 		DebtController:         debtCtrl,
 		AccountController:      accountCtrl,
+
+		HoldingController:       holdingCtrl,
+		PortfolioController:     portfolioCtrl,
+		StockAnalysisController: stockAnalysisCtrl,
+		PriceRefreshWorker:      priceRefreshWorker,
 	}, nil
 }
 

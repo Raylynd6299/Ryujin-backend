@@ -6,7 +6,9 @@ import (
 	"github.com/gin-gonic/gin"
 
 	financeHTTP "github.com/Raylynd6299/ryujin/internal/modules/finance/infrastructure/http"
+	investmentHTTP "github.com/Raylynd6299/ryujin/internal/modules/investment/infrastructure/http"
 	userHTTP "github.com/Raylynd6299/ryujin/internal/modules/user/infrastructure/http"
+	userMiddlewares "github.com/Raylynd6299/ryujin/internal/modules/user/infrastructure/http/middlewares"
 	"github.com/Raylynd6299/ryujin/internal/shared/infrastructure/http/middlewares"
 )
 
@@ -45,7 +47,15 @@ func SetupRouter(deps *AppDependencies) *gin.Engine {
 			deps.AccountController,
 		)
 
-		// TODO: Register investment module routes
+		// Investment module: /holdings/* /portfolio/* /stocks/*
+		investmentHTTP.RegisterRoutes(
+			v1,
+			deps.HoldingController,
+			deps.PortfolioController,
+			deps.StockAnalysisController,
+			userMiddlewares.AuthMiddleware(deps.JWTService),
+		)
+
 		// TODO: Register goal module routes
 		// TODO: Register dashboard module routes
 	}
