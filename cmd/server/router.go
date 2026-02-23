@@ -5,6 +5,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 
+	financeHTTP "github.com/Raylynd6299/ryujin/internal/modules/finance/infrastructure/http"
+	userHTTP "github.com/Raylynd6299/ryujin/internal/modules/user/infrastructure/http"
 	"github.com/Raylynd6299/ryujin/internal/shared/infrastructure/http/middlewares"
 )
 
@@ -13,7 +15,7 @@ func SetupRouter(deps *AppDependencies) *gin.Engine {
 	engine := deps.Engine
 
 	// Apply global middlewares
-	engine.Use(gin.Recovery()) // Recover from panics
+	engine.Use(gin.Recovery())
 	engine.Use(middlewares.LoggerMiddleware())
 	engine.Use(middlewares.CORSMiddleware())
 	engine.Use(middlewares.RateLimitMiddleware())
@@ -27,29 +29,26 @@ func SetupRouter(deps *AppDependencies) *gin.Engine {
 	})
 
 	// API v1 routes group
-	// TODO: Uncomment when modules are ready
-	// v1 := engine.Group("/api/v1")
-	// {
-	// 	// TODO: Register user module routes
-	// 	// userRoutes := v1.Group("/users")
-	// 	// user.RegisterRoutes(userRoutes, deps.DB)
+	v1 := engine.Group("/api/v1")
+	{
+		// User module: /auth/* and /users/*
+		userHTTP.RegisterRoutes(v1, deps.AuthController, deps.ProfileController, deps.JWTService)
 
-	// 	// TODO: Register finance module routes
-	// 	// financeRoutes := v1.Group("/finance")
-	// 	// finance.RegisterRoutes(financeRoutes, deps.DB)
+		// Finance module: /categories/* /income-sources/* /expenses/* /debts/* /accounts/*
+		financeHTTP.RegisterRoutes(
+			v1,
+			deps.JWTService,
+			deps.CategoryController,
+			deps.IncomeSourceController,
+			deps.ExpenseController,
+			deps.DebtController,
+			deps.AccountController,
+		)
 
-	// 	// TODO: Register investment module routes
-	// 	// investmentRoutes := v1.Group("/investments")
-	// 	// investment.RegisterRoutes(investmentRoutes, deps.DB)
-
-	// 	// TODO: Register goal module routes
-	// 	// goalRoutes := v1.Group("/goals")
-	// 	// goal.RegisterRoutes(goalRoutes, deps.DB)
-
-	// 	// TODO: Register dashboard module routes
-	// 	// dashboardRoutes := v1.Group("/dashboard")
-	// 	// dashboard.RegisterRoutes(dashboardRoutes, deps.DB)
-	// }
+		// TODO: Register investment module routes
+		// TODO: Register goal module routes
+		// TODO: Register dashboard module routes
+	}
 
 	return engine
 }

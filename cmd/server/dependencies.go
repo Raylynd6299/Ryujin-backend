@@ -9,12 +9,31 @@ import (
 	"gorm.io/gorm"
 
 	"github.com/Raylynd6299/ryujin/internal/config"
+	financeAppServices "github.com/Raylynd6299/ryujin/internal/modules/finance/application/services"
+	financeControllers "github.com/Raylynd6299/ryujin/internal/modules/finance/infrastructure/http/controllers"
+	financeRepos "github.com/Raylynd6299/ryujin/internal/modules/finance/infrastructure/persistence/repositories"
+	userAppServices "github.com/Raylynd6299/ryujin/internal/modules/user/application/services"
+	userControllers "github.com/Raylynd6299/ryujin/internal/modules/user/infrastructure/http/controllers"
+	userRepos "github.com/Raylynd6299/ryujin/internal/modules/user/infrastructure/persistence/repositories"
+	"github.com/Raylynd6299/ryujin/internal/shared/utils"
 )
 
 // AppDependencies holds all application dependencies
 type AppDependencies struct {
-	DB     *gorm.DB
-	Engine *gin.Engine
+	DB         *gorm.DB
+	Engine     *gin.Engine
+	JWTService *utils.JWTService
+
+	// User Module
+	AuthController    *userControllers.AuthController
+	ProfileController *userControllers.ProfileController
+
+	// Finance Module
+	CategoryController     *financeControllers.CategoryController
+	IncomeSourceController *financeControllers.IncomeSourceController
+	ExpenseController      *financeControllers.ExpenseController
+	DebtController         *financeControllers.DebtController
+	AccountController      *financeControllers.AccountController
 }
 
 // NewAppDependencies creates and initializes all application dependencies
@@ -28,9 +47,52 @@ func NewAppDependencies(cfg *config.Config) (*AppDependencies, error) {
 	// Initialize Gin engine
 	engine := initGinEngine(cfg)
 
+	// ── Shared services ──────────────────────────────────────────────────────
+	jwtService := utils.NewJWTService(cfg.JWT.Secret)
+
+	// ── User Module ──────────────────────────────────────────────────────────
+	userRepo := userRepos.NewUserRepositoryGorm(db)
+	authService := userAppServices.NewAuthService(userRepo, jwtService, cfg.JWT.AccessTokenDuration, cfg.JWT.RefreshTokenDuration)
+	profileService := userAppServices.NewProfileService(userRepo)
+	authCtrl := userControllers.NewAuthController(authService)
+	profileCtrl := userControllers.NewProfileController(profileService)
+
+	log.Println("✓ User module initialized")
+
+	// ── Finance Module ────────────────────────────────────────────────────────
+	categoryRepo := financeRepos.NewCategoryRepositoryGorm(db)
+	incomeRepo := financeRepos.NewIncomeSourceRepositoryGorm(db)
+	expenseRepo := financeRepos.NewExpenseRepositoryGorm(db)
+	debtRepo := financeRepos.NewDebtRepositoryGorm(db)
+	accountRepo := financeRepos.NewAccountRepositoryGorm(db)
+
+	categoryService := financeAppServices.NewCategoryService(categoryRepo)
+	incomeService := financeAppServices.NewIncomeSourceService(incomeRepo)
+	expenseService := financeAppServices.NewExpenseService(expenseRepo)
+	debtService := financeAppServices.NewDebtService(debtRepo)
+	accountService := financeAppServices.NewAccountService(accountRepo)
+
+	categoryCtrl := financeControllers.NewCategoryController(categoryService)
+	incomeCtrl := financeControllers.NewIncomeSourceController(incomeService)
+	expenseCtrl := financeControllers.NewExpenseController(expenseService)
+	debtCtrl := financeControllers.NewDebtController(debtService)
+	accountCtrl := financeControllers.NewAccountController(accountService)
+
+	log.Println("✓ Finance module initialized")
+
 	return &AppDependencies{
-		DB:     db,
-		Engine: engine,
+		DB:         db,
+		Engine:     engine,
+		JWTService: jwtService,
+
+		AuthController:    authCtrl,
+		ProfileController: profileCtrl,
+
+		CategoryController:     categoryCtrl,
+		IncomeSourceController: incomeCtrl,
+		ExpenseController:      expenseCtrl,
+		DebtController:         debtCtrl,
+		AccountController:      accountCtrl,
 	}, nil
 }
 
