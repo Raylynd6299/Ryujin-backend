@@ -7,7 +7,9 @@ type HoldingModel struct {
 	ID     string `gorm:"type:uuid;primaryKey;default:uuid_generate_v4()"`
 	UserID string `gorm:"type:uuid;not null;index"`
 
-	Symbol    string `gorm:"size:10;not null;index;constraint:fk_holdings_symbol,OnDelete:RESTRICT"`
+	// Symbol is a FK to stock_quotes.symbol (the natural PK of that table).
+	// The constraint is declared here explicitly so GORM doesn't infer it wrong.
+	Symbol    string `gorm:"size:10;not null;index"`
 	Name      string `gorm:"type:varchar(150);not null"`
 	AssetType string `gorm:"type:varchar(20);not null"`
 
@@ -27,8 +29,10 @@ type HoldingModel struct {
 	CreatedAt time.Time `gorm:"not null;autoCreateTime"`
 	UpdatedAt time.Time `gorm:"not null;autoUpdateTime"`
 
-	// Association — populated on explicit Preload
-	StockQuote StockQuoteModel `gorm:"foreignKey:Symbol;references:Symbol"`
+	// Association — populated on explicit Preload.
+	// foreignKey:Symbol means HoldingModel.Symbol is the FK column.
+	// references:Symbol means it points to StockQuoteModel.Symbol (the PK).
+	StockQuote StockQuoteModel `gorm:"foreignKey:Symbol;references:Symbol;constraint:OnDelete:RESTRICT"`
 }
 
 // TableName returns the GORM table name

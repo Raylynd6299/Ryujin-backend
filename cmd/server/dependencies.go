@@ -16,13 +16,14 @@ import (
 	investAppServices "github.com/Raylynd6299/ryujin/internal/modules/investment/application/services"
 	"github.com/Raylynd6299/ryujin/internal/modules/investment/infrastructure/external"
 	investControllers "github.com/Raylynd6299/ryujin/internal/modules/investment/infrastructure/http/controllers"
-	investModels "github.com/Raylynd6299/ryujin/internal/modules/investment/infrastructure/persistence/models"
 	investRepos "github.com/Raylynd6299/ryujin/internal/modules/investment/infrastructure/persistence/repositories"
 	"github.com/Raylynd6299/ryujin/internal/modules/investment/infrastructure/worker"
 	userAppServices "github.com/Raylynd6299/ryujin/internal/modules/user/application/services"
 	userControllers "github.com/Raylynd6299/ryujin/internal/modules/user/infrastructure/http/controllers"
 	userRepos "github.com/Raylynd6299/ryujin/internal/modules/user/infrastructure/persistence/repositories"
+	"github.com/Raylynd6299/ryujin/internal/shared/infrastructure/persistence"
 	"github.com/Raylynd6299/ryujin/internal/shared/utils"
+	"github.com/Raylynd6299/ryujin/migrations"
 )
 
 // AppDependencies holds all application dependencies
@@ -55,6 +56,11 @@ func NewAppDependencies(cfg *config.Config) (*AppDependencies, error) {
 	db, err := initDatabase(cfg.DB)
 	if err != nil {
 		return nil, fmt.Errorf("failed to initialize database: %w", err)
+	}
+
+	// Run pending migrations before wiring any module
+	if err := persistence.RunMigrations(db, migrations.FS, migrations.Dir); err != nil {
+		return nil, fmt.Errorf("failed to run migrations: %w", err)
 	}
 
 	// Initialize Gin engine
@@ -116,15 +122,6 @@ func NewAppDependencies(cfg *config.Config) (*AppDependencies, error) {
 		yahooClient,
 		15*time.Minute,
 	)
-
-	// Auto-migrate investment models — ORDER MATTERS: StockQuote first (FK target)
-	if err := db.AutoMigrate(
-		&investModels.StockQuoteModel{},
-		&investModels.StockPriceHistoryModel{},
-		&investModels.HoldingModel{},
-	); err != nil {
-		return nil, fmt.Errorf("failed to migrate investment models: %w", err)
-	}
 
 	log.Println("✓ Investment module initialized")
 

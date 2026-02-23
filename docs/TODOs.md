@@ -33,7 +33,39 @@
 - [ ] Finance Module: entities, repositories, application services, HTTP layer
 - [ ] Investment Module: entities, repositories, application services, HTTP layer, external API clients
 - [ ] Goal Module: entities, repositories, application services, HTTP layer
-- [ ] Dashboard Module: aggregation service, HTTP layer
+
+### Dashboard Module — Endpoint `GET /api/v1/dashboard/summary`
+> ⚠️ Pendiente hasta tener Investment Module y Goal Module terminados.
+> El frontend usa datos calculados del Finance Module en el interim.
+
+- [ ] `internal/modules/dashboard/application/dto/dashboard_dto.go`
+  - `KPIsDTO` con: TotalMonthlyIncome, TotalMonthlyExpenses, NetCashFlow, SavingsRatio, TotalAccountsBalance, TotalDebtRemaining, DebtRatio, EmergencyCoverage
+  - `ExpenseByCategoryDTO` con: CategoryName, CategoryIcon, CategoryColor, TotalAmount, Currency, Percentage
+  - `DebtSummaryDTO` con: ID, Name, DebtType, RemainingAmount, TotalAmount, ProgressPercent, Currency
+  - `AccountSummaryDTO` con: ID, Name, AccountType, Balance, Currency
+  - `DashboardSummaryDTO` como respuesta raíz
+
+- [ ] `internal/modules/dashboard/application/services/dashboard_service.go`
+  - Inyectar repos: IncomeSourceRepo, ExpenseRepo, DebtRepo, AccountRepo
+  - Ejecutar queries en **paralelo con goroutines + errgroup**
+  - Calcular KPIs en base a `MonthlyEquivalent()` de cada entidad
+  - Agregar gastos por categoría con JOIN a categories
+
+- [ ] `internal/modules/dashboard/infrastructure/http/controllers/dashboard_controller.go`
+  - `GET /dashboard/summary` → protegido con AuthMiddleware
+  - Thin controller: extraer userID del JWT → llamar service → responder
+
+- [ ] `internal/modules/dashboard/infrastructure/http/router.go`
+  - Registrar la ruta con AuthMiddleware
+
+- [ ] `cmd/server/dependencies.go`
+  - Instanciar DashboardService y DashboardController
+  - Inyectar los repos existentes del Finance Module (sin duplicar)
+
+- [ ] `cmd/server/router.go`
+  - Registrar rutas del Dashboard Module
+
+*Nota: Una vez implementado, reemplazar el cálculo manual del frontend por este endpoint.*
 
 ### Base de Datos
 - [ ] Crear migraciones SQL para producción
@@ -56,4 +88,4 @@
 
 ---
 
-*Última actualización: 2026-02-21*
+*Última actualización: 2026-02-22*

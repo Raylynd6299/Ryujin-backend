@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS users (
 );
 
 -- Index for email lookups (login)
-CREATE UNIQUE INDEX idx_users_email ON users (email) WHERE deleted_at IS NULL;
+CREATE UNIQUE INDEX IF NOT EXISTS idx_users_email ON users (email) WHERE deleted_at IS NULL;
 
 -- Index for soft-delete queries
-CREATE INDEX idx_users_deleted_at ON users (deleted_at);
+CREATE INDEX IF NOT EXISTS idx_users_deleted_at ON users (deleted_at);

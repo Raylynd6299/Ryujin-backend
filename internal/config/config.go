@@ -58,14 +58,20 @@ type RateLimitConfig struct {
 	Enabled bool
 }
 
+// ExternalAPIConfig groups third-party API keys
+type ExternalAPIConfig struct {
+	AlphaVantageAPIKey string
+}
+
 // Config is the root configuration
 type Config struct {
-	DB        DBConfig
-	JWT       JWTConfig
-	Server    ServerConfig
-	Redis     RedisConfig
-	CORS      CORSConfig
-	RateLimit RateLimitConfig
+	DB          DBConfig
+	JWT         JWTConfig
+	Server      ServerConfig
+	Redis       RedisConfig
+	CORS        CORSConfig
+	RateLimit   RateLimitConfig
+	ExternalAPI ExternalAPIConfig
 }
 
 // App is the global config instance
@@ -120,6 +126,9 @@ func Load() error {
 	App.RateLimit.RPS = getEnvInt("RATE_LIMIT_RPS", 10)
 	App.RateLimit.Burst = getEnvInt("RATE_LIMIT_BURST", 20)
 	App.RateLimit.Enabled = getEnvBool("RATE_LIMIT_ENABLED", true)
+
+	// External APIs (empty string = degraded/disabled mode)
+	App.ExternalAPI.AlphaVantageAPIKey = getEnv("ALPHA_VANTAGE_API_KEY", "")
 
 	return nil
 }

@@ -19,8 +19,8 @@ CREATE TABLE IF NOT EXISTS categories (
     updated_at  TIMESTAMPTZ  NOT NULL DEFAULT NOW()
 );
 
-CREATE INDEX idx_categories_user_id ON categories (user_id);
-CREATE INDEX idx_categories_type    ON categories (type);
+CREATE INDEX IF NOT EXISTS idx_categories_user_id ON categories (user_id);
+CREATE INDEX IF NOT EXISTS idx_categories_type    ON categories (type);
 
 -- ============================================================
 -- INCOME SOURCES
@@ -44,8 +44,8 @@ CREATE TABLE IF NOT EXISTS income_sources (
     updated_at   TIMESTAMPTZ  NOT NULL DEFAULT NOW()
 );
 
-CREATE INDEX idx_income_sources_user_id   ON income_sources (user_id);
-CREATE INDEX idx_income_sources_is_active ON income_sources (user_id, is_active);
+CREATE INDEX IF NOT EXISTS idx_income_sources_user_id   ON income_sources (user_id);
+CREATE INDEX IF NOT EXISTS idx_income_sources_is_active ON income_sources (user_id, is_active);
 
 -- ============================================================
 -- EXPENSES
@@ -69,10 +69,10 @@ CREATE TABLE IF NOT EXISTS expenses (
     updated_at   TIMESTAMPTZ  NOT NULL DEFAULT NOW()
 );
 
-CREATE INDEX idx_expenses_user_id        ON expenses (user_id);
-CREATE INDEX idx_expenses_is_active      ON expenses (user_id, is_active);
-CREATE INDEX idx_expenses_expense_date   ON expenses (user_id, expense_date DESC);
-CREATE INDEX idx_expenses_priority       ON expenses (user_id, priority);
+CREATE INDEX IF NOT EXISTS idx_expenses_user_id        ON expenses (user_id);
+CREATE INDEX IF NOT EXISTS idx_expenses_is_active      ON expenses (user_id, is_active);
+CREATE INDEX IF NOT EXISTS idx_expenses_expense_date   ON expenses (user_id, expense_date DESC);
+CREATE INDEX IF NOT EXISTS idx_expenses_priority       ON expenses (user_id, priority);
 
 -- ============================================================
 -- DEBTS
@@ -99,8 +99,8 @@ CREATE TABLE IF NOT EXISTS debts (
     CONSTRAINT chk_remaining_lte_total CHECK (remaining_amount_cents <= total_amount_cents)
 );
 
-CREATE INDEX idx_debts_user_id   ON debts (user_id);
-CREATE INDEX idx_debts_is_active ON debts (user_id, is_active);
+CREATE INDEX IF NOT EXISTS idx_debts_user_id   ON debts (user_id);
+CREATE INDEX IF NOT EXISTS idx_debts_is_active ON debts (user_id, is_active);
 
 -- ============================================================
 -- ACCOUNTS
@@ -120,8 +120,8 @@ CREATE TABLE IF NOT EXISTS accounts (
     updated_at    TIMESTAMPTZ  NOT NULL DEFAULT NOW()
 );
 
-CREATE INDEX idx_accounts_user_id   ON accounts (user_id);
-CREATE INDEX idx_accounts_is_active ON accounts (user_id, is_active);
+CREATE INDEX IF NOT EXISTS idx_accounts_user_id   ON accounts (user_id);
+CREATE INDEX IF NOT EXISTS idx_accounts_is_active ON accounts (user_id, is_active);
 
 -- ============================================================
 -- SEED: System default categories
