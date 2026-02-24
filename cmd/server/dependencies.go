@@ -13,6 +13,9 @@ import (
 	financeAppServices "github.com/Raylynd6299/ryujin/internal/modules/finance/application/services"
 	financeControllers "github.com/Raylynd6299/ryujin/internal/modules/finance/infrastructure/http/controllers"
 	financeRepos "github.com/Raylynd6299/ryujin/internal/modules/finance/infrastructure/persistence/repositories"
+	goalAppServices "github.com/Raylynd6299/ryujin/internal/modules/goal/application/services"
+	goalControllers "github.com/Raylynd6299/ryujin/internal/modules/goal/infrastructure/http/controllers"
+	goalRepos "github.com/Raylynd6299/ryujin/internal/modules/goal/infrastructure/persistence/repositories"
 	investAppServices "github.com/Raylynd6299/ryujin/internal/modules/investment/application/services"
 	"github.com/Raylynd6299/ryujin/internal/modules/investment/infrastructure/external"
 	investControllers "github.com/Raylynd6299/ryujin/internal/modules/investment/infrastructure/http/controllers"
@@ -48,6 +51,9 @@ type AppDependencies struct {
 	PortfolioController     *investControllers.PortfolioController
 	StockAnalysisController *investControllers.StockAnalysisController
 	PriceRefreshWorker      *worker.PriceRefreshWorker
+
+	// Goal Module
+	GoalController *goalControllers.GoalController
 }
 
 // NewAppDependencies creates and initializes all application dependencies
@@ -125,6 +131,14 @@ func NewAppDependencies(cfg *config.Config) (*AppDependencies, error) {
 
 	log.Println("✓ Investment module initialized")
 
+	// ── Goal Module ───────────────────────────────────────────────────────────
+	goalRepo := goalRepos.NewGoalRepositoryGorm(db)
+	goalContributionRepo := goalRepos.NewGoalContributionRepositoryGorm(db)
+	goalService := goalAppServices.NewGoalService(goalRepo, goalContributionRepo)
+	goalCtrl := goalControllers.NewGoalController(goalService)
+
+	log.Println("✓ Goal module initialized")
+
 	return &AppDependencies{
 		DB:         db,
 		Engine:     engine,
@@ -143,6 +157,8 @@ func NewAppDependencies(cfg *config.Config) (*AppDependencies, error) {
 		PortfolioController:     portfolioCtrl,
 		StockAnalysisController: stockAnalysisCtrl,
 		PriceRefreshWorker:      priceRefreshWorker,
+
+		GoalController: goalCtrl,
 	}, nil
 }
 
