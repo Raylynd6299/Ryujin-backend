@@ -18,6 +18,7 @@ func RegisterRoutes(
 	expenseCtrl *controllers.ExpenseController,
 	debtCtrl *controllers.DebtController,
 	accountCtrl *controllers.AccountController,
+	indicesCtrl *controllers.IndicesController,
 ) {
 	// All finance routes require authentication
 	authMiddleware := middlewares.AuthMiddleware(jwtService)
@@ -79,5 +80,13 @@ func RegisterRoutes(
 		accounts.PATCH("/:id/balance", accountCtrl.UpdateBalance)
 		accounts.PATCH("/:id/deactivate", accountCtrl.DeactivateAccount)
 		accounts.DELETE("/:id", accountCtrl.DeleteAccount)
+	}
+
+	// Finance Indices & Summary
+	finance := v1.Group("/finance")
+	finance.Use(authMiddleware)
+	{
+		finance.GET("/indices", indicesCtrl.GetIndices)
+		finance.GET("/summary", indicesCtrl.GetSummary)
 	}
 }

@@ -45,6 +45,7 @@ type AppDependencies struct {
 	ExpenseController      *financeControllers.ExpenseController
 	DebtController         *financeControllers.DebtController
 	AccountController      *financeControllers.AccountController
+	IndicesController      *financeControllers.IndicesController
 
 	// Investment Module
 	HoldingController       *investControllers.HoldingController
@@ -131,6 +132,12 @@ func NewAppDependencies(cfg *config.Config) (*AppDependencies, error) {
 
 	log.Println("✓ Investment module initialized")
 
+	// ── Indices (cross-cutting: finance + investment) ─────────────────────────
+	indicesService := financeAppServices.NewIndicesCalculatorService(incomeRepo, expenseRepo, debtRepo, accountRepo, holdingRepo)
+	indicesCtrl := financeControllers.NewIndicesController(indicesService)
+
+	log.Println("✓ Finance indices initialized")
+
 	// ── Goal Module ───────────────────────────────────────────────────────────
 	goalRepo := goalRepos.NewGoalRepositoryGorm(db)
 	goalContributionRepo := goalRepos.NewGoalContributionRepositoryGorm(db)
@@ -152,6 +159,7 @@ func NewAppDependencies(cfg *config.Config) (*AppDependencies, error) {
 		ExpenseController:      expenseCtrl,
 		DebtController:         debtCtrl,
 		AccountController:      accountCtrl,
+		IndicesController:      indicesCtrl,
 
 		HoldingController:       holdingCtrl,
 		PortfolioController:     portfolioCtrl,

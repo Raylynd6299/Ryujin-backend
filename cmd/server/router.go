@@ -37,7 +37,7 @@ func SetupRouter(deps *AppDependencies) *gin.Engine {
 		// User module: /auth/* and /users/*
 		userHTTP.RegisterRoutes(v1, deps.AuthController, deps.ProfileController, deps.JWTService)
 
-		// Finance module: /categories/* /income-sources/* /expenses/* /debts/* /accounts/*
+		// Finance module: /categories/* /income-sources/* /expenses/* /debts/* /accounts/* /finance/*
 		financeHTTP.RegisterRoutes(
 			v1,
 			deps.JWTService,
@@ -46,6 +46,7 @@ func SetupRouter(deps *AppDependencies) *gin.Engine {
 			deps.ExpenseController,
 			deps.DebtController,
 			deps.AccountController,
+			deps.IndicesController,
 		)
 
 		// Investment module: /holdings/* /portfolio/* /stocks/*
