@@ -6,11 +6,11 @@ import (
 	"math"
 	"time"
 
-	"github.com/Raylynd6299/ryujin/internal/modules/finance/application/dto"
-	"github.com/Raylynd6299/ryujin/internal/modules/finance/domain/entities"
-	financeErrors "github.com/Raylynd6299/ryujin/internal/modules/finance/domain/errors"
-	"github.com/Raylynd6299/ryujin/internal/modules/finance/domain/repositories"
-	"github.com/Raylynd6299/ryujin/internal/shared/utils"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/finance/application/dto"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/finance/domain/entities"
+	financeErrors "github.com/Raylynd6299/Ryujin-backend/internal/modules/finance/domain/errors"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/finance/domain/repositories"
+	"github.com/Raylynd6299/Ryujin-backend/internal/shared/utils"
 )
 
 // ExpenseService handles expense use cases

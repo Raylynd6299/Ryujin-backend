@@ -6,8 +6,8 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	entityVO "github.com/Raylynd6299/ryujin/internal/modules/user/domain/value_objects"
-	sharedVO "github.com/Raylynd6299/ryujin/internal/shared/domain/value_objects"
+	entityVO "github.com/Raylynd6299/Ryujin-backend/internal/modules/user/domain/value_objects"
+	sharedVO "github.com/Raylynd6299/Ryujin-backend/internal/shared/domain/value_objects"
 )
 
 func TestNewUserValid(t *testing.T) {

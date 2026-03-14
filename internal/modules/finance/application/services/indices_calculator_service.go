@@ -4,10 +4,10 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/Raylynd6299/ryujin/internal/modules/finance/application/dto"
-	financeRepos "github.com/Raylynd6299/ryujin/internal/modules/finance/domain/repositories"
-	investRepos "github.com/Raylynd6299/ryujin/internal/modules/investment/domain/repositories"
-	pkgFinance "github.com/Raylynd6299/ryujin/pkg/finance"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/finance/application/dto"
+	financeRepos "github.com/Raylynd6299/Ryujin-backend/internal/modules/finance/domain/repositories"
+	investRepos "github.com/Raylynd6299/Ryujin-backend/internal/modules/investment/domain/repositories"
+	pkgFinance "github.com/Raylynd6299/Ryujin-backend/pkg/finance"
 )
 
 // IndicesCalculatorService computes the financial health indices for a user.

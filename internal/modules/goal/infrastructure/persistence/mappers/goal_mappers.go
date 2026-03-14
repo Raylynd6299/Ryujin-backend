@@ -1,11 +1,11 @@
 package mappers
 
 import (
-	"github.com/Raylynd6299/ryujin/internal/modules/goal/domain/entities"
-	goalErrors "github.com/Raylynd6299/ryujin/internal/modules/goal/domain/errors"
-	vo "github.com/Raylynd6299/ryujin/internal/modules/goal/domain/value_objects"
-	"github.com/Raylynd6299/ryujin/internal/modules/goal/infrastructure/persistence/models"
-	sharedVO "github.com/Raylynd6299/ryujin/internal/shared/domain/value_objects"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/goal/domain/entities"
+	goalErrors "github.com/Raylynd6299/Ryujin-backend/internal/modules/goal/domain/errors"
+	vo "github.com/Raylynd6299/Ryujin-backend/internal/modules/goal/domain/value_objects"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/goal/infrastructure/persistence/models"
+	sharedVO "github.com/Raylynd6299/Ryujin-backend/internal/shared/domain/value_objects"
 )
 
 // ============================================================

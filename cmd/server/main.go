@@ -9,7 +9,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/Raylynd6299/ryujin/internal/config"
+	"github.com/Raylynd6299/Ryujin-backend/internal/config"
 )
 
 func main() {

@@ -3,7 +3,7 @@ package repositories
 import (
 	"context"
 
-	"github.com/Raylynd6299/ryujin/internal/modules/investment/domain/entities"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/investment/domain/entities"
 )
 
 // StockPriceHistoryRepository defines the port for stock price history persistence.

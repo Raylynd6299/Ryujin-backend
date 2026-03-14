@@ -6,9 +6,9 @@ import (
 	"math"
 	"time"
 
-	"github.com/Raylynd6299/ryujin/internal/modules/investment/domain/entities"
-	"github.com/Raylynd6299/ryujin/internal/modules/investment/domain/repositories"
-	"github.com/Raylynd6299/ryujin/internal/modules/investment/infrastructure/external"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/investment/domain/entities"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/investment/domain/repositories"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/investment/infrastructure/external"
 )
 
 // PriceRefreshWorker periodically refreshes prices for all symbols with active holdings.

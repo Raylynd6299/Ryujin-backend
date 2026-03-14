@@ -6,9 +6,9 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/Raylynd6299/ryujin/internal/modules/user/domain/errors"
-	"github.com/Raylynd6299/ryujin/internal/modules/user/domain/value_objects"
-	sharedVO "github.com/Raylynd6299/ryujin/internal/shared/domain/value_objects"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/user/domain/errors"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/user/domain/value_objects"
+	sharedVO "github.com/Raylynd6299/Ryujin-backend/internal/shared/domain/value_objects"
 )
 
 // User represents a user account in the system.

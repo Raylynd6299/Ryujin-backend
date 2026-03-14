@@ -8,9 +8,9 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	appServices "github.com/Raylynd6299/ryujin/internal/modules/investment/application/services"
-	investErrors "github.com/Raylynd6299/ryujin/internal/modules/investment/domain/errors"
-	sharedHTTP "github.com/Raylynd6299/ryujin/internal/shared/infrastructure/http"
+	appServices "github.com/Raylynd6299/Ryujin-backend/internal/modules/investment/application/services"
+	investErrors "github.com/Raylynd6299/Ryujin-backend/internal/modules/investment/domain/errors"
+	sharedHTTP "github.com/Raylynd6299/Ryujin-backend/internal/shared/infrastructure/http"
 )
 
 const (

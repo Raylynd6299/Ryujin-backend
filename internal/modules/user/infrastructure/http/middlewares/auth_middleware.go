@@ -5,8 +5,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	sharedHTTP "github.com/Raylynd6299/ryujin/internal/shared/infrastructure/http"
-	"github.com/Raylynd6299/ryujin/internal/shared/utils"
+	sharedHTTP "github.com/Raylynd6299/Ryujin-backend/internal/shared/infrastructure/http"
+	"github.com/Raylynd6299/Ryujin-backend/internal/shared/utils"
 )
 
 const (

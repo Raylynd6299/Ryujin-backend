@@ -5,9 +5,9 @@ import (
 
 	"gorm.io/gorm"
 
-	"github.com/Raylynd6299/ryujin/internal/modules/investment/domain/entities"
-	"github.com/Raylynd6299/ryujin/internal/modules/investment/infrastructure/persistence/mappers"
-	"github.com/Raylynd6299/ryujin/internal/modules/investment/infrastructure/persistence/models"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/investment/domain/entities"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/investment/infrastructure/persistence/mappers"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/investment/infrastructure/persistence/models"
 )
 
 // StockPriceHistoryRepositoryGorm implements domain/repositories.StockPriceHistoryRepository using GORM.

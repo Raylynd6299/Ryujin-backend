@@ -6,8 +6,8 @@ import (
 
 	"github.com/google/uuid"
 
-	financeErrors "github.com/Raylynd6299/ryujin/internal/modules/finance/domain/errors"
-	sharedVO "github.com/Raylynd6299/ryujin/internal/shared/domain/value_objects"
+	financeErrors "github.com/Raylynd6299/Ryujin-backend/internal/modules/finance/domain/errors"
+	sharedVO "github.com/Raylynd6299/Ryujin-backend/internal/shared/domain/value_objects"
 )
 
 // AccountType classifies the kind of financial account

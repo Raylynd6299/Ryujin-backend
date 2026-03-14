@@ -3,8 +3,8 @@ package repositories
 import (
 	"context"
 
-	"github.com/Raylynd6299/ryujin/internal/modules/finance/domain/entities"
-	"github.com/Raylynd6299/ryujin/internal/shared/utils"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/finance/domain/entities"
+	"github.com/Raylynd6299/Ryujin-backend/internal/shared/utils"
 )
 
 // IncomeSourceRepository defines the port for income source persistence

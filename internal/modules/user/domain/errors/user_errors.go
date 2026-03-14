@@ -1,7 +1,7 @@
 package errors
 
 import (
-	sharedErrors "github.com/Raylynd6299/ryujin/internal/shared/domain/errors"
+	sharedErrors "github.com/Raylynd6299/Ryujin-backend/internal/shared/domain/errors"
 )
 
 // InvalidUserError is a validation error for user validation failures.

@@ -3,7 +3,7 @@ package repositories
 import (
 	"context"
 
-	"github.com/Raylynd6299/ryujin/internal/modules/finance/domain/entities"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/finance/domain/entities"
 )
 
 // AccountRepository defines the port for account persistence

@@ -3,9 +3,9 @@ package controllers
 import (
 	"github.com/gin-gonic/gin"
 
-	appServices "github.com/Raylynd6299/ryujin/internal/modules/finance/application/services"
-	userMiddlewares "github.com/Raylynd6299/ryujin/internal/modules/user/infrastructure/http/middlewares"
-	sharedHTTP "github.com/Raylynd6299/ryujin/internal/shared/infrastructure/http"
+	appServices "github.com/Raylynd6299/Ryujin-backend/internal/modules/finance/application/services"
+	userMiddlewares "github.com/Raylynd6299/Ryujin-backend/internal/modules/user/infrastructure/http/middlewares"
+	sharedHTTP "github.com/Raylynd6299/Ryujin-backend/internal/shared/infrastructure/http"
 )
 
 // IndicesController handles financial health index HTTP endpoints

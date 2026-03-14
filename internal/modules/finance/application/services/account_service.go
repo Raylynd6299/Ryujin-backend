@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/Raylynd6299/ryujin/internal/modules/finance/application/dto"
-	"github.com/Raylynd6299/ryujin/internal/modules/finance/domain/entities"
-	"github.com/Raylynd6299/ryujin/internal/modules/finance/domain/repositories"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/finance/application/dto"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/finance/domain/entities"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/finance/domain/repositories"
 )
 
 // AccountService handles account use cases

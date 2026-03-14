@@ -7,10 +7,10 @@ import (
 
 	"gorm.io/gorm"
 
-	"github.com/Raylynd6299/ryujin/internal/modules/investment/domain/entities"
-	investErrors "github.com/Raylynd6299/ryujin/internal/modules/investment/domain/errors"
-	"github.com/Raylynd6299/ryujin/internal/modules/investment/infrastructure/persistence/mappers"
-	"github.com/Raylynd6299/ryujin/internal/modules/investment/infrastructure/persistence/models"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/investment/domain/entities"
+	investErrors "github.com/Raylynd6299/Ryujin-backend/internal/modules/investment/domain/errors"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/investment/infrastructure/persistence/mappers"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/investment/infrastructure/persistence/models"
 )
 
 // allowedSortColumns whitelists valid column names to prevent SQL injection

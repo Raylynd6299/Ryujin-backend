@@ -6,10 +6,10 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/Raylynd6299/ryujin/internal/modules/finance/application/dto"
-	appServices "github.com/Raylynd6299/ryujin/internal/modules/finance/application/services"
-	userMiddlewares "github.com/Raylynd6299/ryujin/internal/modules/user/infrastructure/http/middlewares"
-	sharedHTTP "github.com/Raylynd6299/ryujin/internal/shared/infrastructure/http"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/finance/application/dto"
+	appServices "github.com/Raylynd6299/Ryujin-backend/internal/modules/finance/application/services"
+	userMiddlewares "github.com/Raylynd6299/Ryujin-backend/internal/modules/user/infrastructure/http/middlewares"
+	sharedHTTP "github.com/Raylynd6299/Ryujin-backend/internal/shared/infrastructure/http"
 )
 
 // ExpenseController handles expense HTTP endpoints

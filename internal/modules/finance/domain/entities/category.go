@@ -6,7 +6,7 @@ import (
 
 	"github.com/google/uuid"
 
-	financeErrors "github.com/Raylynd6299/ryujin/internal/modules/finance/domain/errors"
+	financeErrors "github.com/Raylynd6299/Ryujin-backend/internal/modules/finance/domain/errors"
 )
 
 // CategoryType defines whether a category is for income or expense

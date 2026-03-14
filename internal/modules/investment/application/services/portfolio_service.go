@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/Raylynd6299/ryujin/internal/modules/investment/application/dto"
-	"github.com/Raylynd6299/ryujin/internal/modules/investment/domain/repositories"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/investment/application/dto"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/investment/domain/repositories"
 )
 
 // PortfolioService handles portfolio-level aggregation use cases

@@ -3,7 +3,7 @@ package dto
 import (
 	"time"
 
-	"github.com/Raylynd6299/ryujin/internal/modules/investment/domain/entities"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/investment/domain/entities"
 )
 
 // StockQuoteResponse is the API response for stock quote data

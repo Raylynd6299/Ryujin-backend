@@ -5,12 +5,12 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	financeHTTP "github.com/Raylynd6299/ryujin/internal/modules/finance/infrastructure/http"
-	goalHTTP "github.com/Raylynd6299/ryujin/internal/modules/goal/infrastructure/http"
-	investmentHTTP "github.com/Raylynd6299/ryujin/internal/modules/investment/infrastructure/http"
-	userHTTP "github.com/Raylynd6299/ryujin/internal/modules/user/infrastructure/http"
-	userMiddlewares "github.com/Raylynd6299/ryujin/internal/modules/user/infrastructure/http/middlewares"
-	"github.com/Raylynd6299/ryujin/internal/shared/infrastructure/http/middlewares"
+	financeHTTP "github.com/Raylynd6299/Ryujin-backend/internal/modules/finance/infrastructure/http"
+	goalHTTP "github.com/Raylynd6299/Ryujin-backend/internal/modules/goal/infrastructure/http"
+	investmentHTTP "github.com/Raylynd6299/Ryujin-backend/internal/modules/investment/infrastructure/http"
+	userHTTP "github.com/Raylynd6299/Ryujin-backend/internal/modules/user/infrastructure/http"
+	userMiddlewares "github.com/Raylynd6299/Ryujin-backend/internal/modules/user/infrastructure/http/middlewares"
+	"github.com/Raylynd6299/Ryujin-backend/internal/shared/infrastructure/http/middlewares"
 )
 
 // SetupRouter configures all routes and middlewares for the application

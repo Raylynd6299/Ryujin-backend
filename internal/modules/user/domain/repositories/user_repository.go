@@ -3,8 +3,8 @@ package repositories
 import (
 	"context"
 
-	"github.com/Raylynd6299/ryujin/internal/modules/user/domain/entities"
-	"github.com/Raylynd6299/ryujin/internal/modules/user/domain/value_objects"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/user/domain/entities"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/user/domain/value_objects"
 )
 
 // UserRepository defines the contract for user persistence.

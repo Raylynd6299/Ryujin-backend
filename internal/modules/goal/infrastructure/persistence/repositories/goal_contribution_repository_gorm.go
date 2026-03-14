@@ -6,10 +6,10 @@ import (
 
 	"gorm.io/gorm"
 
-	"github.com/Raylynd6299/ryujin/internal/modules/goal/domain/entities"
-	goalErrors "github.com/Raylynd6299/ryujin/internal/modules/goal/domain/errors"
-	"github.com/Raylynd6299/ryujin/internal/modules/goal/infrastructure/persistence/mappers"
-	"github.com/Raylynd6299/ryujin/internal/modules/goal/infrastructure/persistence/models"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/goal/domain/entities"
+	goalErrors "github.com/Raylynd6299/Ryujin-backend/internal/modules/goal/domain/errors"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/goal/infrastructure/persistence/mappers"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/goal/infrastructure/persistence/models"
 )
 
 // GoalContributionRepositoryGorm implements domain/repositories.GoalContributionRepository using GORM

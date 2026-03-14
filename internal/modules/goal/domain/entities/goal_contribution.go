@@ -6,8 +6,8 @@ import (
 
 	"github.com/google/uuid"
 
-	goalErrors "github.com/Raylynd6299/ryujin/internal/modules/goal/domain/errors"
-	sharedVO "github.com/Raylynd6299/ryujin/internal/shared/domain/value_objects"
+	goalErrors "github.com/Raylynd6299/Ryujin-backend/internal/modules/goal/domain/errors"
+	sharedVO "github.com/Raylynd6299/Ryujin-backend/internal/shared/domain/value_objects"
 )
 
 // GoalContribution represents a single monetary contribution toward a purchase goal.

@@ -6,9 +6,9 @@ import (
 
 	"github.com/google/uuid"
 
-	goalErrors "github.com/Raylynd6299/ryujin/internal/modules/goal/domain/errors"
-	vo "github.com/Raylynd6299/ryujin/internal/modules/goal/domain/value_objects"
-	sharedVO "github.com/Raylynd6299/ryujin/internal/shared/domain/value_objects"
+	goalErrors "github.com/Raylynd6299/Ryujin-backend/internal/modules/goal/domain/errors"
+	vo "github.com/Raylynd6299/Ryujin-backend/internal/modules/goal/domain/value_objects"
+	sharedVO "github.com/Raylynd6299/Ryujin-backend/internal/shared/domain/value_objects"
 )
 
 // PurchaseGoal represents a savings target for a specific purchase.

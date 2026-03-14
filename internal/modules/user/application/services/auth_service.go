@@ -5,13 +5,13 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/Raylynd6299/ryujin/internal/modules/user/application/dto"
-	"github.com/Raylynd6299/ryujin/internal/modules/user/domain/entities"
-	userErrors "github.com/Raylynd6299/ryujin/internal/modules/user/domain/errors"
-	"github.com/Raylynd6299/ryujin/internal/modules/user/domain/repositories"
-	"github.com/Raylynd6299/ryujin/internal/modules/user/domain/value_objects"
-	sharedErrors "github.com/Raylynd6299/ryujin/internal/shared/domain/errors"
-	"github.com/Raylynd6299/ryujin/internal/shared/utils"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/user/application/dto"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/user/domain/entities"
+	userErrors "github.com/Raylynd6299/Ryujin-backend/internal/modules/user/domain/errors"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/user/domain/repositories"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/user/domain/value_objects"
+	sharedErrors "github.com/Raylynd6299/Ryujin-backend/internal/shared/domain/errors"
+	"github.com/Raylynd6299/Ryujin-backend/internal/shared/utils"
 )
 
 // AuthService handles authentication use cases: register, login, refresh token.

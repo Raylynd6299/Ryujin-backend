@@ -7,7 +7,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/Raylynd6299/ryujin/internal/config"
+	"github.com/Raylynd6299/Ryujin-backend/internal/config"
 )
 
 // RateLimiter implements a simple token bucket rate limiter

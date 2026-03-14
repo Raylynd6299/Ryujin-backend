@@ -7,11 +7,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Raylynd6299/ryujin/internal/modules/investment/application/dto"
-	"github.com/Raylynd6299/ryujin/internal/modules/investment/domain/entities"
-	investErrors "github.com/Raylynd6299/ryujin/internal/modules/investment/domain/errors"
-	domainRepos "github.com/Raylynd6299/ryujin/internal/modules/investment/domain/repositories"
-	"github.com/Raylynd6299/ryujin/internal/modules/investment/infrastructure/external"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/investment/application/dto"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/investment/domain/entities"
+	investErrors "github.com/Raylynd6299/Ryujin-backend/internal/modules/investment/domain/errors"
+	domainRepos "github.com/Raylynd6299/Ryujin-backend/internal/modules/investment/domain/repositories"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/investment/infrastructure/external"
 )
 
 // StockAnalysisService handles find-or-fetch logic for stock quotes.

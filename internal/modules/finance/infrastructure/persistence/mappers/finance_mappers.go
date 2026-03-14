@@ -1,11 +1,11 @@
 package mappers
 
 import (
-	"github.com/Raylynd6299/ryujin/internal/modules/finance/domain/entities"
-	financeErrors "github.com/Raylynd6299/ryujin/internal/modules/finance/domain/errors"
-	vo "github.com/Raylynd6299/ryujin/internal/modules/finance/domain/value_objects"
-	"github.com/Raylynd6299/ryujin/internal/modules/finance/infrastructure/persistence/models"
-	sharedVO "github.com/Raylynd6299/ryujin/internal/shared/domain/value_objects"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/finance/domain/entities"
+	financeErrors "github.com/Raylynd6299/Ryujin-backend/internal/modules/finance/domain/errors"
+	vo "github.com/Raylynd6299/Ryujin-backend/internal/modules/finance/domain/value_objects"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/finance/infrastructure/persistence/models"
+	sharedVO "github.com/Raylynd6299/Ryujin-backend/internal/shared/domain/value_objects"
 )
 
 // ============================================================

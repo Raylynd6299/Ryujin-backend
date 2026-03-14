@@ -3,7 +3,7 @@ package http
 import (
 	"github.com/gin-gonic/gin"
 
-	"github.com/Raylynd6299/ryujin/internal/modules/investment/infrastructure/http/controllers"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/investment/infrastructure/http/controllers"
 )
 
 // RegisterRoutes registers all investment module routes under /api/v1.

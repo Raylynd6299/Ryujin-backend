@@ -1,4 +1,4 @@
-module github.com/Raylynd6299/ryujin
+module github.com/Raylynd6299/Ryujin-backend
 
 go 1.25.6
 

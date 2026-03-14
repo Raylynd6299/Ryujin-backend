@@ -6,8 +6,8 @@ import (
 
 	"github.com/google/uuid"
 
-	investErrors "github.com/Raylynd6299/ryujin/internal/modules/investment/domain/errors"
-	sharedVO "github.com/Raylynd6299/ryujin/internal/shared/domain/value_objects"
+	investErrors "github.com/Raylynd6299/Ryujin-backend/internal/modules/investment/domain/errors"
+	sharedVO "github.com/Raylynd6299/Ryujin-backend/internal/shared/domain/value_objects"
 )
 
 // Holding represents an investment position held by a user.

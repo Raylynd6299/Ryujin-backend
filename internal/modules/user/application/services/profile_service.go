@@ -4,11 +4,11 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/Raylynd6299/ryujin/internal/modules/user/application/dto"
-	"github.com/Raylynd6299/ryujin/internal/modules/user/domain/repositories"
-	"github.com/Raylynd6299/ryujin/internal/modules/user/domain/value_objects"
-	sharedErrors "github.com/Raylynd6299/ryujin/internal/shared/domain/errors"
-	sharedVO "github.com/Raylynd6299/ryujin/internal/shared/domain/value_objects"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/user/application/dto"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/user/domain/repositories"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/user/domain/value_objects"
+	sharedErrors "github.com/Raylynd6299/Ryujin-backend/internal/shared/domain/errors"
+	sharedVO "github.com/Raylynd6299/Ryujin-backend/internal/shared/domain/value_objects"
 )
 
 // ProfileService handles user profile management use cases.

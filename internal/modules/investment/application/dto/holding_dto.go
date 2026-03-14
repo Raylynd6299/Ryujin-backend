@@ -1,7 +1,7 @@
 package dto
 
 import (
-	"github.com/Raylynd6299/ryujin/internal/modules/investment/domain/entities"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/investment/domain/entities"
 )
 
 // --- Request DTOs ---

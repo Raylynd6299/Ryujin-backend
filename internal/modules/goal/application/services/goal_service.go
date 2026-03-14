@@ -6,11 +6,11 @@ import (
 	"math"
 	"time"
 
-	"github.com/Raylynd6299/ryujin/internal/modules/goal/application/dto"
-	"github.com/Raylynd6299/ryujin/internal/modules/goal/domain/entities"
-	goalErrors "github.com/Raylynd6299/ryujin/internal/modules/goal/domain/errors"
-	"github.com/Raylynd6299/ryujin/internal/modules/goal/domain/repositories"
-	"github.com/Raylynd6299/ryujin/internal/shared/utils"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/goal/application/dto"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/goal/domain/entities"
+	goalErrors "github.com/Raylynd6299/Ryujin-backend/internal/modules/goal/domain/errors"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/goal/domain/repositories"
+	"github.com/Raylynd6299/Ryujin-backend/internal/shared/utils"
 )
 
 // GoalService handles purchase goal and contribution use cases

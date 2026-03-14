@@ -1,6 +1,23 @@
-# Ryujin Backend
+# 🐉 Ryujin — Backend
 
-Go REST API for the Ryujin personal finance platform. Built with **DDD + Ports/Adapters (Hexagonal)** architecture, structured around bounded contexts.
+<p align="center">
+  <img src="./Ryujin-portada.png" alt="Ryujin — Gestión de Finanzas Personales" width="100%" />
+</p>
+
+<p align="center">
+  <strong>Go REST API for the Ryujin personal finance platform</strong><br/>
+  DDD + Ports/Adapters · Gin · GORM · PostgreSQL · JWT
+</p>
+
+<p align="center">
+  <a href="https://github.com/YOUR_USER/ryujin-frontend">
+    🖥️ Frontend Repo
+  </a>
+  &nbsp;·&nbsp;
+  <a href="https://github.com/YOUR_USER/ryujin">
+    🐳 Infrastructure (Docker)
+  </a>
+</p>
 
 ---
 
@@ -95,62 +112,62 @@ All routes are prefixed with `/api/v1`. Protected routes require `Authorization:
 
 ### Health
 
-| Method | Path      | Auth | Description       |
-| ------ | --------- | ---- | ----------------- |
-| GET    | `/health` | No   | Liveness check    |
+| Method | Path      | Auth | Description    |
+| ------ | --------- | ---- | -------------- |
+| GET    | `/health` | No   | Liveness check |
 
 ### User Module
 
-| Method | Path                    | Auth | Description                |
-| ------ | ----------------------- | ---- | -------------------------- |
-| POST   | `/auth/register`        | No   | Register a new user        |
-| POST   | `/auth/login`           | No   | Login, returns JWT pair    |
-| POST   | `/auth/refresh`         | No   | Refresh access token       |
-| POST   | `/auth/logout`          | Yes  | Invalidate refresh token   |
-| GET    | `/users/me`             | Yes  | Get current user profile   |
-| PUT    | `/users/me`             | Yes  | Update profile             |
-| PUT    | `/users/me/password`    | Yes  | Change password            |
+| Method | Path                 | Auth | Description              |
+| ------ | -------------------- | ---- | ------------------------ |
+| POST   | `/auth/register`     | No   | Register a new user      |
+| POST   | `/auth/login`        | No   | Login, returns JWT pair  |
+| POST   | `/auth/refresh`      | No   | Refresh access token     |
+| POST   | `/auth/logout`       | Yes  | Invalidate refresh token |
+| GET    | `/users/me`          | Yes  | Get current user profile |
+| PUT    | `/users/me`          | Yes  | Update profile           |
+| PUT    | `/users/me/password` | Yes  | Change password          |
 
 ### Finance Module
 
-| Method | Path                       | Auth | Description                    |
-| ------ | -------------------------- | ---- | ------------------------------ |
-| GET    | `/categories`              | Yes  | List categories                |
-| POST   | `/categories`              | Yes  | Create category                |
-| PUT    | `/categories/:id`          | Yes  | Update category                |
-| DELETE | `/categories/:id`          | Yes  | Delete category                |
-| GET    | `/income-sources`          | Yes  | List income sources            |
-| POST   | `/income-sources`          | Yes  | Create income source           |
-| PUT    | `/income-sources/:id`      | Yes  | Update income source           |
-| DELETE | `/income-sources/:id`      | Yes  | Delete income source           |
-| GET    | `/expenses`                | Yes  | List expenses (paginated)      |
-| POST   | `/expenses`                | Yes  | Create expense                 |
-| PUT    | `/expenses/:id`            | Yes  | Update expense                 |
-| DELETE | `/expenses/:id`            | Yes  | Delete expense                 |
-| GET    | `/debts`                   | Yes  | List debts                     |
-| POST   | `/debts`                   | Yes  | Create debt                    |
-| PUT    | `/debts/:id`               | Yes  | Update debt                    |
-| DELETE | `/debts/:id`               | Yes  | Delete debt                    |
-| GET    | `/accounts`                | Yes  | List accounts                  |
-| POST   | `/accounts`                | Yes  | Create account                 |
-| PUT    | `/accounts/:id`            | Yes  | Update account                 |
-| DELETE | `/accounts/:id`            | Yes  | Delete account                 |
+| Method | Path                  | Auth | Description               |
+| ------ | --------------------- | ---- | ------------------------- |
+| GET    | `/categories`         | Yes  | List categories           |
+| POST   | `/categories`         | Yes  | Create category           |
+| PUT    | `/categories/:id`     | Yes  | Update category           |
+| DELETE | `/categories/:id`     | Yes  | Delete category           |
+| GET    | `/income-sources`     | Yes  | List income sources       |
+| POST   | `/income-sources`     | Yes  | Create income source      |
+| PUT    | `/income-sources/:id` | Yes  | Update income source      |
+| DELETE | `/income-sources/:id` | Yes  | Delete income source      |
+| GET    | `/expenses`           | Yes  | List expenses (paginated) |
+| POST   | `/expenses`           | Yes  | Create expense            |
+| PUT    | `/expenses/:id`       | Yes  | Update expense            |
+| DELETE | `/expenses/:id`       | Yes  | Delete expense            |
+| GET    | `/debts`              | Yes  | List debts                |
+| POST   | `/debts`              | Yes  | Create debt               |
+| PUT    | `/debts/:id`          | Yes  | Update debt               |
+| DELETE | `/debts/:id`          | Yes  | Delete debt               |
+| GET    | `/accounts`           | Yes  | List accounts             |
+| POST   | `/accounts`           | Yes  | Create account            |
+| PUT    | `/accounts/:id`       | Yes  | Update account            |
+| DELETE | `/accounts/:id`       | Yes  | Delete account            |
 
 ### Investment Module
 
-| Method | Path                           | Auth | Description                          |
-| ------ | ------------------------------ | ---- | ------------------------------------ |
-| GET    | `/holdings`                    | Yes  | List holdings (paginated)            |
-| POST   | `/holdings`                    | Yes  | Create holding (upserts stock quote) |
-| GET    | `/holdings/:id`                | Yes  | Get holding by ID                    |
-| PUT    | `/holdings/:id`                | Yes  | Update holding                       |
-| DELETE | `/holdings/:id`                | Yes  | Delete holding                       |
-| POST   | `/holdings/:id/refresh-price`  | Yes  | Force price refresh from market API  |
-| GET    | `/portfolio/summary`           | Yes  | Portfolio totals grouped by currency |
-| GET    | `/portfolio/performance`       | Yes  | Per-holding unrealized P&L           |
-| GET    | `/stocks`                      | Yes  | List cached stock quotes             |
-| GET    | `/stocks/:symbol/quote`        | Yes  | Get quote for a symbol               |
-| GET    | `/stocks/:symbol/history`      | Yes  | Price history for a symbol           |
+| Method | Path                          | Auth | Description                          |
+| ------ | ----------------------------- | ---- | ------------------------------------ |
+| GET    | `/holdings`                   | Yes  | List holdings (paginated)            |
+| POST   | `/holdings`                   | Yes  | Create holding (upserts stock quote) |
+| GET    | `/holdings/:id`               | Yes  | Get holding by ID                    |
+| PUT    | `/holdings/:id`               | Yes  | Update holding                       |
+| DELETE | `/holdings/:id`               | Yes  | Delete holding                       |
+| POST   | `/holdings/:id/refresh-price` | Yes  | Force price refresh from market API  |
+| GET    | `/portfolio/summary`          | Yes  | Portfolio totals grouped by currency |
+| GET    | `/portfolio/performance`      | Yes  | Per-holding unrealized P&L           |
+| GET    | `/stocks`                     | Yes  | List cached stock quotes             |
+| GET    | `/stocks/:symbol/quote`       | Yes  | Get quote for a symbol               |
+| GET    | `/stocks/:symbol/history`     | Yes  | Price history for a symbol           |
 
 ---
 
@@ -167,7 +184,7 @@ All endpoints return a consistent JSON envelope:
 }
 ```
 
-Paginated list responses include:
+Paginated list responses:
 
 ```json
 {
@@ -185,30 +202,30 @@ Paginated list responses include:
 
 ## Environment Variables
 
-Copy `.env.example` to `.env` and fill in your values:
+Copy `.env.example` to `.env`:
 
 ```bash
 cp .env.example .env
 ```
 
-| Variable                 | Default       | Description                              |
-| ------------------------ | ------------- | ---------------------------------------- |
-| `PORT`                   | `8080`        | HTTP server port                         |
-| `GIN_MODE`               | `debug`       | `debug` or `release`                     |
-| `LOG_LEVEL`              | `info`        | Log verbosity                            |
-| `DB_HOST`                | `localhost`   | PostgreSQL host                          |
-| `DB_PORT`                | `5432`        | PostgreSQL port                          |
-| `DB_USER`                | —             | Database user                            |
-| `DB_PASSWORD`            | —             | Database password                        |
-| `DB_NAME`                | `ryujin_db`   | Database name                            |
-| `DB_SSLMODE`             | `disable`     | SSL mode for Postgres                    |
-| `JWT_SECRET`             | —             | Secret key for signing JWTs              |
-| `JWT_ACCESS_DURATION`    | `15m`         | Access token TTL                         |
-| `JWT_REFRESH_DURATION`   | `24h`         | Refresh token TTL                        |
-| `CORS_ALLOWED_ORIGINS`   | `localhost:*` | Comma-separated allowed origins          |
-| `RATE_LIMIT_ENABLED`     | `true`        | Enable/disable rate limiting             |
-| `RATE_LIMIT_RPS`         | `10`          | Requests per second per IP               |
-| `RATE_LIMIT_BURST`       | `20`          | Burst size                               |
+| Variable               | Default       | Description                     |
+| ---------------------- | ------------- | ------------------------------- |
+| `PORT`                 | `8080`        | HTTP server port                |
+| `GIN_MODE`             | `debug`       | `debug` or `release`            |
+| `LOG_LEVEL`            | `info`        | Log verbosity                   |
+| `DB_HOST`              | `localhost`   | PostgreSQL host                 |
+| `DB_PORT`              | `5432`        | PostgreSQL port                 |
+| `DB_USER`              | —             | Database user                   |
+| `DB_PASSWORD`          | —             | Database password               |
+| `DB_NAME`              | `ryujin_db`   | Database name                   |
+| `DB_SSLMODE`           | `disable`     | SSL mode for Postgres           |
+| `JWT_SECRET`           | —             | Secret key for signing JWTs     |
+| `JWT_ACCESS_DURATION`  | `15m`         | Access token TTL                |
+| `JWT_REFRESH_DURATION` | `24h`         | Refresh token TTL               |
+| `CORS_ALLOWED_ORIGINS` | `localhost:*` | Comma-separated allowed origins |
+| `RATE_LIMIT_ENABLED`   | `true`        | Enable/disable rate limiting    |
+| `RATE_LIMIT_RPS`       | `10`          | Requests per second per IP      |
+| `RATE_LIMIT_BURST`     | `20`          | Burst size                      |
 
 ---
 
@@ -216,13 +233,13 @@ cp .env.example .env
 
 ### With Docker (recommended)
 
-From the project root:
+From the infrastructure repo root:
 
 ```bash
 docker compose up --build
 ```
 
-This starts PostgreSQL, runs migrations automatically, and boots the API on `http://localhost:8080`.
+Starts PostgreSQL, runs migrations automatically, and boots the API on `http://localhost:8080`.
 
 ### Without Docker
 
@@ -234,7 +251,6 @@ go install github.com/air-verse/air@latest
 
 # Set up environment
 cp .env.example .env
-# edit .env with your DB credentials
 
 # Run with hot reload
 air
@@ -248,13 +264,10 @@ go run ./cmd/server
 ## Database Migrations
 
 Migrations run automatically on startup via embedded SQL files (golang-migrate).  
-Migration files live in `migrations/` and follow the `{version}_{description}.{up,down}.sql` convention.
-
-To add a new migration:
+Migration files live in `migrations/` following the `{version}_{description}.{up,down}.sql` convention.
 
 ```bash
-# Naming convention: sequential number + snake_case description
-# Example:
+# Add a new migration
 touch migrations/000004_create_goals_table.up.sql
 touch migrations/000004_create_goals_table.down.sql
 ```
@@ -269,7 +282,6 @@ touch migrations/000004_create_goals_table.down.sql
 - **All queries are scoped by `user_id`.** This is a multi-tenant system.
 - **GORM models are separate from domain entities.** Mappers convert between them — domain stays pure.
 - **Controllers are thin.** Validate input → call application service → return response. No business logic.
-- **`pkg/` contains only pure functions.** No DB, no HTTP, no side effects — easy to test in isolation.
-- **Monetary amounts in the DB:** `BIGINT` (cents). Ratios and percentages: `NUMERIC(10,4)`.
-- **UUIDs** for all primary keys. Generated at the DB level (`uuid_generate_v4()`).
+- **`pkg/` contains only pure functions.** No DB, no HTTP, no side effects.
+- **UUIDs** for all primary keys, generated at the DB level.
 - **Soft deletes** on users (`deleted_at`). Hard deletes on financial records.

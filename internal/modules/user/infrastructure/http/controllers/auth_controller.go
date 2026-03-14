@@ -5,9 +5,9 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/Raylynd6299/ryujin/internal/modules/user/application/dto"
-	"github.com/Raylynd6299/ryujin/internal/modules/user/application/services"
-	sharedHTTP "github.com/Raylynd6299/ryujin/internal/shared/infrastructure/http"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/user/application/dto"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/user/application/services"
+	sharedHTTP "github.com/Raylynd6299/Ryujin-backend/internal/shared/infrastructure/http"
 )
 
 // AuthController handles authentication HTTP endpoints.

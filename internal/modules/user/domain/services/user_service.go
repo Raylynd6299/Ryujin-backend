@@ -3,8 +3,8 @@ package services
 import (
 	"context"
 
-	"github.com/Raylynd6299/ryujin/internal/modules/user/domain/entities"
-	"github.com/Raylynd6299/ryujin/internal/modules/user/domain/value_objects"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/user/domain/entities"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/user/domain/value_objects"
 )
 
 // UserService defines domain operations that require repository access.

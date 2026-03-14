@@ -3,9 +3,9 @@ package http
 import (
 	"github.com/gin-gonic/gin"
 
-	"github.com/Raylynd6299/ryujin/internal/modules/goal/infrastructure/http/controllers"
-	"github.com/Raylynd6299/ryujin/internal/modules/user/infrastructure/http/middlewares"
-	"github.com/Raylynd6299/ryujin/internal/shared/utils"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/goal/infrastructure/http/controllers"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/user/infrastructure/http/middlewares"
+	"github.com/Raylynd6299/Ryujin-backend/internal/shared/utils"
 )
 
 // RegisterRoutes registers all goal module routes under /api/v1.

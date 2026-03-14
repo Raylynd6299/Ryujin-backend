@@ -6,9 +6,9 @@ import (
 
 	"github.com/google/uuid"
 
-	financeErrors "github.com/Raylynd6299/ryujin/internal/modules/finance/domain/errors"
-	vo "github.com/Raylynd6299/ryujin/internal/modules/finance/domain/value_objects"
-	sharedVO "github.com/Raylynd6299/ryujin/internal/shared/domain/value_objects"
+	financeErrors "github.com/Raylynd6299/Ryujin-backend/internal/modules/finance/domain/errors"
+	vo "github.com/Raylynd6299/Ryujin-backend/internal/modules/finance/domain/value_objects"
+	sharedVO "github.com/Raylynd6299/Ryujin-backend/internal/shared/domain/value_objects"
 )
 
 // IncomeSource represents a source of income for a user.

@@ -6,11 +6,11 @@ import (
 
 	"gorm.io/gorm"
 
-	"github.com/Raylynd6299/ryujin/internal/modules/finance/domain/entities"
-	financeErrors "github.com/Raylynd6299/ryujin/internal/modules/finance/domain/errors"
-	"github.com/Raylynd6299/ryujin/internal/modules/finance/infrastructure/persistence/mappers"
-	"github.com/Raylynd6299/ryujin/internal/modules/finance/infrastructure/persistence/models"
-	"github.com/Raylynd6299/ryujin/internal/shared/utils"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/finance/domain/entities"
+	financeErrors "github.com/Raylynd6299/Ryujin-backend/internal/modules/finance/domain/errors"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/finance/infrastructure/persistence/mappers"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/finance/infrastructure/persistence/models"
+	"github.com/Raylynd6299/Ryujin-backend/internal/shared/utils"
 )
 
 // IncomeSourceRepositoryGorm implements domain/repositories.IncomeSourceRepository using GORM

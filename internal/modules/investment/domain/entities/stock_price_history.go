@@ -4,7 +4,7 @@ import (
 	"strings"
 	"time"
 
-	investErrors "github.com/Raylynd6299/ryujin/internal/modules/investment/domain/errors"
+	investErrors "github.com/Raylynd6299/Ryujin-backend/internal/modules/investment/domain/errors"
 	"github.com/google/uuid"
 )
 

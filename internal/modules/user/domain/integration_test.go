@@ -5,8 +5,8 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/Raylynd6299/ryujin/internal/modules/user/domain/entities"
-	"github.com/Raylynd6299/ryujin/internal/modules/user/domain/value_objects"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/user/domain/entities"
+	"github.com/Raylynd6299/Ryujin-backend/internal/modules/user/domain/value_objects"
 )
 
 // TestUserDomainIntegration tests the complete user domain layer working together.
